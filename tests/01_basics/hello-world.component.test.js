@@ -3,24 +3,20 @@ import { HelloWorldComponent } from "../../src/01_basics/components/hello-world.
 
 import "../../src/01_basics/components/hello-world.component";
 
-describe("HelloWorldComponent", () => {
-  it("should be a constructor", async () => {
-    const element = new HelloWorldComponent();
+describe("01: Basics", () => {
+  describe("HelloWorldComponent", () => {
+    it("should be constructable via HTML", async () => {
+      const element = await fixture(html`<hello-world></hello-world>`);
 
-    expect(element).to.be.an("HTMLElement");
-  });
+      expect(element.constructor).to.equal(HelloWorldComponent);
+    });
 
-  it("should be constructable via HTML", async () => {
-    const element = await fixture(html`<hello-world></hello-world>`);
+    it("should have a shadow root that contains a span with the text 'Hello World!'", async () => {
+      const element = await fixture(html`<hello-world></hello-world>`);
 
-    expect(element).to.be.an("HTMLElement");
-  });
+      const span = element.shadowRoot.querySelector("span");
 
-  it("should contain a span with th text 'Hello World!'", async () => {
-    const element = await fixture(html`<hello-world></hello-world>`);
-
-    const span = element.shadowRoot.querySelector("span");
-
-    expect(span.textContent).to.equal("Hello World!");
+      expect(span.textContent).to.equal("Hello World!");
+    });
   });
 });
