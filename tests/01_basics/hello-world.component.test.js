@@ -1,7 +1,7 @@
 import { html, fixture, expect } from "@open-wc/testing";
-import { HelloWorldComponent } from "../src/components/hello-world.component";
+import { HelloWorldComponent } from "../../src/01_basics/components/hello-world.component";
 
-import "../src/components/hello-world.component";
+import "../../src/01_basics/components/hello-world.component";
 
 describe("HelloWorldComponent", () => {
   it("should be a constructor", async () => {
